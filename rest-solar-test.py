@@ -13,7 +13,7 @@ def get_observer_location():
     str: latitude
     str: longitude"""
 
-    #url= "https://ip-api.com/json/"+myloc.json()['ip']
+
     url='http://ip-api.com/json/?fields=61439'
 
     output= requests.get(url) 
@@ -65,7 +65,6 @@ float: altitude
     sun_azi=float(sun_loc['azimuth']['degrees'])
     distance = data_sun['data']['table']['rows'][0]['cells'][0]['distance']['fromEarth']['km']
     magnitude = data_sun['data']['table']['rows'][0]['cells'][0]['extraInfo']['magnitude']
-    #data_sun
     print (f"Distance from earth to {body} is {distance} Km and Magnitude is {magnitude}")
 
     return sun_alt, sun_azi, body
@@ -78,13 +77,6 @@ def print_position(azimuth, altitude,body):
     #body="Sun"
     print(f"The {body} is currently at: azimuth of ** {azimuth}  and altitude of ** {altitude}")
 
-#if __name__ == "__main__":
-#n = len(sys.argv)
-#if sys.argv[1] !=None :
-#    body=sys.argv[1]
-#newloc = (sys.argv[2],sys.argv[3])
-#print(newloc)
-
 newloc=""
 
 if newloc == "":
@@ -93,4 +85,4 @@ if newloc == "":
 else:
     azimuth, altitude, body= get_sun_position(newloc)
 print_position(azimuth, altitude,body)
-print ("My local machine is  at", latitude, longitude, )
+print ("My local machine is  at", latitude, longitude,)
